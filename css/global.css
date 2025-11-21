@@ -1,7 +1,7 @@
 body{
     font-family: 'Fira Sans', Arial, sans-serif;
     margin: 0px;
-    color: rgb(255, 255, 255);
+    color: rgb(200, 200, 200);
     background-color: rgb(18, 17, 17);
 }
 
@@ -17,13 +17,13 @@ ul{
 
 
 .img1{
-    max-width: 100%;
-    display: block;
     margin-left: 1px;
     image-resolution: 1000dpi;
-    width: 1800px;
-
+    width:400px;
+    height: 388px;
     border-radius: 10px;
+    margin-top: -234px;
+    
 }
 
 .subtitulo{
