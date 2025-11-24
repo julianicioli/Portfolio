@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script defer src="js/envioWPP.js"></script>
     <title>Portifólio</title>
 </head>
 <body>
@@ -101,7 +102,7 @@
                     Estou aberta a novas oportunidades, ideias e projetos :) </p>
                         <ul class="footer-contato">
                             <h2 class="entreemcontato">Entre em contato:</h2>
-                            <a href="#" class="contato-pessoal abrir-form">E-mail</a><br>
+                            <a href="#" class="contato-pessoal abrir-form-email">E-mail</a><br>
                             <a href="#" class="contato-pessoal abrir-form">Whatsapp</a>
 
                             <!-- Formulário popup -->
@@ -131,51 +132,5 @@
                     </div>      
                 </div>
         </footer>
-        <script>
-            const linksForm = document.querySelectorAll(".abrir-form");
-            const formContainer = document.getElementById("formContainer");
-            const fechar = document.getElementById("fechar");
-            const enviar = document.getElementById("enviar");
-
-            // Abre o formulário ao clicar em qualquer link
-            linksForm.forEach(link => {
-                link.addEventListener("click", (e) => {
-                    e.preventDefault(); // evita que o link vá para outra página
-                    formContainer.style.display = "block";
-                });
-            });
-
-            // Fecha o formulário
-            fechar.onclick = () => formContainer.style.display = "none";
-
-            // Envia mensagem para o WhatsApp (validação de telefone)
-            enviar.onclick = () => {
-                const nomeRaw = document.getElementById("nome").value || "";
-                const mensagemRaw = document.getElementById("mensagem").value || "";
-                const nome = encodeURIComponent(nomeRaw.trim());
-                const mensagem = encodeURIComponent(mensagemRaw.trim());
-                let numero = document.getElementById("numero").value.replace(/\D/g,'');
-
-                // Campos obrigatórios
-                if (!nome || !numero || !mensagem) {
-                    alert("Preencha todos os campos!");
-                    return;
-                }
-
-                // Validação: aceitar apenas 10 ou 11 dígitos (DDD + número)
-                if (!/^\d{10,11}$/.test(numero)) {
-                    alert("Número inválido. Digite o DDD + número (10 ou 11 dígitos). Ex: 19999999999");
-                    document.getElementById("numero").focus();
-                    return;
-                }
-
-                // Remove zeros à esquerda, se houver
-                numero = numero.replace(/^0+/, '');
-
-                // Redireciona para WhatsApp (código do país 55)
-                const encodedText = `Ol%C3%A1,%20meu%20nome%20%C3%A9%20${nome}.%20${mensagem}`;
-                window.location.href = `https://wa.me/55${numero}?text=${encodedText}`;
-            }
-        </script>
 </body>
 </html>
